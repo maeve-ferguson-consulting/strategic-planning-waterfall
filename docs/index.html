@@ -70,7 +70,8 @@
 
   /* ---------- Top mark ---------- */
   .top-mark { padding: 32px 0; }
-  .top-mark .container { display: flex; align-items: center; gap: 16px; }
+  .top-mark .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .top-mark-left { display: flex; align-items: center; gap: 16px; }
   .monogram {
     width: 44px; height: 44px; border-radius: 999px; flex-shrink: 0;
     background: linear-gradient(135deg, #8B7340 0%, #C9A96E 25%, #F5E6BC 50%, #C9A96E 75%, #8B7340 100%);
@@ -78,18 +79,25 @@
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 6px 24px rgba(201,169,110,0.25);
   }
+  .wordmark-group { line-height: 1.3; }
   .wordmark { font-family: var(--serif); font-weight: 600; font-size: 1.0625rem; color: var(--cream); }
+  .wordmark-sub { font-family: var(--sans); font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,245,218,0.45); }
+  .tagline { font-family: var(--serif); font-style: italic; font-size: 0.9375rem; color: rgba(245,245,218,0.4); }
 
   /* ---------- Hero ---------- */
   .hero { padding: 48px 0 64px; }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
+  .hero-grid { display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: start; }
+  .hero-photo img {
+    width: 100%; height: auto; display: block; border-radius: 10px;
+    box-shadow: 0 8px 28px rgba(15,26,23,0.5);
+  }
   .hero .eyebrow { display: block; margin-bottom: 20px; }
   .hero h1 {
     font-family: var(--serif); font-weight: 600; font-size: clamp(2.25rem, 4.5vw, 3rem);
     line-height: 1.15; color: var(--cream); margin-bottom: 20px;
   }
   .hero h1 em { font-style: italic; color: var(--gold); font-weight: 600; }
-  .hero .sub { max-width: 56ch; margin-bottom: 8px; }
+  .hero .sub { max-width: 48ch; margin-bottom: 8px; }
 
   .panel {
     background-color: var(--paper);
@@ -97,6 +105,8 @@
     border-radius: 14px;
     box-shadow: 0 8px 24px rgba(34,55,52,0.12);
     padding: 32px;
+    margin-top: 32px;
+    max-width: 480px;
   }
   .panel .eyebrow { display: block; margin-bottom: 12px; color: var(--gold-ink); }
   .panel h2 { font-family: var(--serif); font-weight: 600; font-size: 1.375rem; color: var(--primary); margin-bottom: 8px; }
@@ -117,7 +127,7 @@
   .btn-ghost:hover { color: var(--gold-light); border-color: var(--gold-light); }
   .btn:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 3px; }
 
-  .waitlist-cta { margin-top: 20px; text-align: center; }
+  .waitlist-cta { margin-top: 20px; }
   .waitlist-cta p { font-size: 0.8125rem; color: rgba(245,245,218,0.55); margin-bottom: 12px; }
 
   /* ---------- What's inside ---------- */
@@ -160,24 +170,31 @@
 
   <header class="top-mark">
     <div class="container">
-      <div class="monogram" aria-hidden="true">MF</div>
-      <div class="wordmark">Maeve Ferguson Consulting</div>
+      <div class="top-mark-left">
+        <div class="monogram" aria-hidden="true">MF</div>
+        <div class="wordmark-group">
+          <div class="wordmark">Maeve Ferguson</div>
+          <div class="wordmark-sub">The Authority Architect</div>
+        </div>
+      </div>
+      <div class="tagline">Brilliance Without Infrastructure Is Wasted</div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">Free skill · AI Summit 2026</span>
-          <h1>Your 3-year vision, cascaded all the way down to <em>what you do this week.</em></h1>
-          <p class="sub">The Strategic Planning Waterfall is a connected set of planning sessions built on 10x Is Easier Than 2x and Full Focus. One question at a time, it takes you through annual, quarterly, monthly and weekly planning &mdash; each level reading the one above it &mdash; so nothing drifts on its own. You walk away with a branded, interactive plan and a spreadsheet tracker at every level.</p>
+        <div class="hero-photo">
+          <img src="assets/maeve-ferguson.jpg" alt="Maeve Ferguson">
         </div>
 
         <div>
+          <span class="eyebrow">Free skill &middot; AI Summit 2026</span>
+          <h1>Your 10x vision, <em>cascaded to this week.</em></h1>
+          <p class="sub">The Strategic Planning Waterfall cascades your 3-year 10x vision down through quarterly, monthly and weekly planning, one question at a time, built on 10x Is Easier Than 2x and Full Focus.</p>
+
           <div class="panel">
             <span class="eyebrow">Get the skill</span>
-            <h2>Send it to my inbox</h2>
             <p class="panel-sub">Free. Runs inside Claude. Delivered in the next few minutes.</p>
 
             <div class="ghl-embed-wrap">
