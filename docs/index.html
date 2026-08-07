@@ -3,12 +3,13 @@
   "The Strategic Planning Waterfall" — free skill delivered to AI summit attendees.
   Styled from the mfc-brand-guidelines design contract (references/DESIGN.md).
 
-  SETUP — the one thing left to wire up before this goes live:
-  Find "GHL_FORM_ENDPOINT" below and replace the placeholder with the real
-  form action URL from GoHighLevel (open the form this should feed into,
-  Settings > Integrate, copy the form action URL — NOT the iframe embed).
-  Field names posted are first_name and email, matching the existing
-  waitlist form's field names.
+  The capture form is a GHL inline embed (form id R6GbLWBJUle1xkKv5fpn,
+  "AI Summit 2026 – Strategic Planning Waterfall Download"), wired to a
+  workflow that tags contacts ai-summit-2026-strategic-planning-waterfall
+  on submit. Because that iframe renders on GHL's own white background, the
+  surrounding panel uses the brand's light-card-on-dark-surface treatment
+  (DESIGN.md) rather than a dark card, so the transition into the form is
+  seamless instead of a white box on a dark box.
 -->
 <!DOCTYPE html>
 <html lang="en-GB">
@@ -23,9 +24,11 @@
   :root {
     --primary: #223734;
     --cream: #F5F5DA;
+    --paper: #FFFFFF;
     --gold: #F5DEA7;
     --gold-dark: #C4A44E;
     --gold-light: #FBF0D0;
+    --gold-ink: #7E6839;
     --ink: #1B1B1B;
     --dark-deep: #1A2B28;
     --dark-mid: #2A433F;
@@ -89,48 +92,33 @@
   .hero .sub { max-width: 56ch; margin-bottom: 8px; }
 
   .panel {
-    background-color: var(--dark-deep);
-    border: 1px solid var(--border-strong);
+    background-color: var(--paper);
+    border: 1px solid rgba(196,164,78,0.25);
     border-radius: 14px;
-    box-shadow: 0 8px 28px rgba(15,26,23,0.5);
+    box-shadow: 0 8px 24px rgba(34,55,52,0.12);
     padding: 32px;
   }
-  .panel .eyebrow { display: block; margin-bottom: 12px; }
-  .panel h2 { font-family: var(--serif); font-weight: 600; font-size: 1.375rem; color: var(--cream); margin-bottom: 8px; }
-  .panel .panel-sub { font-size: 0.875rem; margin-bottom: 24px; color: rgba(245,245,218,0.6); }
+  .panel .eyebrow { display: block; margin-bottom: 12px; color: var(--gold-ink); }
+  .panel h2 { font-family: var(--serif); font-weight: 600; font-size: 1.375rem; color: var(--primary); margin-bottom: 8px; }
+  .panel .panel-sub { font-size: 0.875rem; margin-bottom: 20px; color: rgba(27,27,27,0.6); }
 
-  form { display: flex; flex-direction: column; gap: 14px; }
-  .field label {
-    display: block; font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
-    letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dark); margin-bottom: 6px;
-  }
-  .field input {
-    width: 100%; height: 44px; padding: 12px; border-radius: 10px;
-    background-color: rgba(15,26,23,0.6); border: 1px solid var(--border-rest);
-    color: var(--cream); font-family: var(--sans); font-size: 0.9375rem;
-    transition: border-color 200ms ease;
-  }
-  .field input::placeholder { color: rgba(245,245,218,0.35); }
-  .field input:focus { outline: none; border-color: var(--gold-dark); }
+  .ghl-embed-wrap { min-height: 300px; }
 
   .btn {
     display: inline-flex; align-items: center; justify-content: center;
     min-height: 44px; padding: 13px 26px; border-radius: 999px; border: 1px solid transparent;
     font-family: var(--sans); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.2em;
-    text-transform: uppercase; cursor: pointer;
+    text-transform: uppercase; cursor: pointer; text-decoration: none;
     transition: background-color 200ms ease, box-shadow 200ms ease;
   }
   .btn-primary { background-color: var(--gold); color: var(--ink); }
   .btn-primary:hover { background-color: var(--gold-light); box-shadow: 0 10px 36px rgba(201,169,110,0.3); }
-  .btn-primary:disabled { opacity: 0.6; cursor: default; }
+  .btn-ghost { background-color: transparent; color: var(--gold-dark); border: 1px solid var(--gold-dark); }
+  .btn-ghost:hover { color: var(--gold-light); border-color: var(--gold-light); }
   .btn:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 3px; }
 
-  .form-note { font-size: 0.75rem; line-height: 1.5; color: rgba(245,245,218,0.45); margin-top: 4px; }
-
-  .form-success { display: none; text-align: center; padding: 12px 0; }
-  .form-success .eyebrow { display: block; margin-bottom: 8px; }
-  .form-success p { color: var(--cream); font-family: var(--serif); font-size: 1.0625rem; }
-  .form-error { display: none; font-size: 0.8125rem; color: var(--gold); margin-top: -4px; }
+  .waitlist-cta { margin-top: 20px; text-align: center; }
+  .waitlist-cta p { font-size: 0.8125rem; color: rgba(245,245,218,0.55); margin-bottom: 12px; }
 
   /* ---------- What's inside ---------- */
   .whats-inside { padding: 64px 0; }
@@ -186,28 +174,36 @@
           <p class="sub">The Strategic Planning Waterfall is a connected set of planning sessions built on 10x Is Easier Than 2x and Full Focus. One question at a time, it takes you through annual, quarterly, monthly and weekly planning &mdash; each level reading the one above it &mdash; so nothing drifts on its own. You walk away with a branded, interactive plan and a spreadsheet tracker at every level.</p>
         </div>
 
-        <div class="panel">
-          <span class="eyebrow">Get the skill</span>
-          <h2>Send it to my inbox</h2>
-          <p class="panel-sub">Free. Runs inside Claude. Delivered in the next few minutes.</p>
+        <div>
+          <div class="panel">
+            <span class="eyebrow">Get the skill</span>
+            <h2>Send it to my inbox</h2>
+            <p class="panel-sub">Free. Runs inside Claude. Delivered in the next few minutes.</p>
 
-          <form id="waterfall-form">
-            <div class="field">
-              <label for="first_name">First name</label>
-              <input type="text" id="first_name" name="first_name" placeholder="First name" required>
+            <div class="ghl-embed-wrap">
+              <iframe
+                src="https://www.calendar.maevefergusonconsulting.com/widget/form/R6GbLWBJUle1xkKv5fpn"
+                style="width:100%;height:100%;border:none;border-radius:8px"
+                id="inline-R6GbLWBJUle1xkKv5fpn"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="AI Summit 2026 – Strategic Planning Waterfall Download"
+                data-height="736"
+                data-layout-iframe-id="inline-R6GbLWBJUle1xkKv5fpn"
+                data-form-id="R6GbLWBJUle1xkKv5fpn"
+                title="AI Summit 2026 – Strategic Planning Waterfall Download"
+              ></iframe>
             </div>
-            <div class="field">
-              <label for="email">Email address</label>
-              <input type="email" id="email" name="email" placeholder="Email address" required>
-            </div>
-            <p class="form-error" id="form-error">Something went wrong &mdash; please try again, or email hello@maeveferguson.com.</p>
-            <button class="btn btn-primary" type="submit" id="submit-btn">Send me the skill</button>
-            <p class="form-note">No spam. Unsubscribe any time. See our <a href="https://www.maeveferguson.com/privacy-policy" style="color:inherit;">privacy policy</a>.</p>
-          </form>
+          </div>
 
-          <div class="form-success" id="form-success">
-            <span class="eyebrow">Check your inbox</span>
-            <p>You're in &mdash; the skill is on its way.</p>
+          <div class="waitlist-cta">
+            <p>Want to talk it through instead?</p>
+            <a class="btn btn-ghost" href="https://www.maevefergusonconsulting.com/waitlist-page?utm_source=ai-summit-2026&utm_medium=event&utm_campaign=waitlist&utm_content=lead-magnet-page">Join the 1:1 waitlist</a>
           </div>
         </div>
       </div>
@@ -259,54 +255,7 @@
     </div>
   </footer>
 
-  <script>
-    // SETUP: replace with the real GHL form action URL before going live.
-    // In GHL: open the form/workflow this should feed into > Settings > Integrate
-    // > copy the form action URL (not the iframe embed snippet).
-    const GHL_FORM_ENDPOINT = "REPLACE_WITH_GHL_FORM_ACTION_URL";
-
-    const form = document.getElementById('waterfall-form');
-    const btn = document.getElementById('submit-btn');
-    const errorEl = document.getElementById('form-error');
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      errorEl.style.display = 'none';
-
-      if (GHL_FORM_ENDPOINT === "REPLACE_WITH_GHL_FORM_ACTION_URL") {
-        errorEl.textContent = "Form isn't wired up yet — set GHL_FORM_ENDPOINT in index.html.";
-        errorEl.style.display = 'block';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = 'Sending...';
-
-      const params = new URLSearchParams({
-        first_name: document.getElementById('first_name').value,
-        email: document.getElementById('email').value,
-        utm_source: new URLSearchParams(location.search).get('utm_source') || '',
-        utm_medium: new URLSearchParams(location.search).get('utm_medium') || '',
-        utm_campaign: new URLSearchParams(location.search).get('utm_campaign') || '',
-        utm_content: new URLSearchParams(location.search).get('utm_content') || ''
-      });
-
-      try {
-        await fetch(GHL_FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: params.toString(),
-          mode: 'no-cors'
-        });
-        form.style.display = 'none';
-        document.getElementById('form-success').style.display = 'block';
-      } catch (err) {
-        errorEl.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Send me the skill';
-      }
-    });
-  </script>
+  <script src="https://www.calendar.maevefergusonconsulting.com/js/form_embed.js"></script>
 
 </body>
 </html>
