@@ -1,0 +1,19 @@
+{
+  "name": "strategic-planning-waterfall",
+  "description": "The Strategic Planning Waterfall — a connected annual, quarterly, monthly, and weekly planning system built on the 10x Is Easier Than 2x and Full Focus methodologies.",
+  "owner": {
+    "name": "Maeve Ferguson Consulting",
+    "email": "hello@maeveferguson.com"
+  },
+  "plugins": [
+    {
+      "name": "strategic-planning-waterfall",
+      "source": "./",
+      "displayName": "The Strategic Planning Waterfall",
+      "description": "Cascading annual, quarterly, monthly, and weekly strategic planning — one question at a time, every level reading the one above it.",
+      "author": {
+        "name": "Maeve Ferguson Consulting"
+      }
+    }
+  ]
+}

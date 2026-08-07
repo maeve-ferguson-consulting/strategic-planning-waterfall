@@ -1,0 +1,14 @@
+{
+  "name": "strategic-planning-waterfall",
+  "description": "Cascading annual, quarterly, monthly, and weekly strategic planning skills built on the 10x Is Easier Than 2x and Full Focus methodologies.",
+  "author": {
+    "name": "Maeve Ferguson Consulting"
+  },
+  "skills": [
+    "./skills/define-brand-voice",
+    "./skills/annual-strategic-planner",
+    "./skills/quarterly-strategic-planner",
+    "./skills/monthly-gameplan",
+    "./skills/weekly-plan"
+  ]
+}
