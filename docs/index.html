@@ -80,7 +80,7 @@
   .tagline { font-family: var(--sans); font-style: normal; font-size: 0.75rem; color: var(--gold-dark); }
 
   /* ---------- Hero ---------- */
-  .hero { position: relative; padding: 72px 0 96px; overflow: hidden; }
+  .hero { position: relative; padding: 72px 0 48px; overflow: hidden; }
   .hero-watermark {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     font-family: var(--serif); font-weight: 600; font-size: 42rem; line-height: 1;
@@ -108,10 +108,9 @@
   .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
   .hero .sub { font-size: 0.9375rem; max-width: 48ch; margin-bottom: 8px; }
 
-  .hero-divider {
-    margin: 40px 0; max-width: 480px;
-    height: 1px; background: linear-gradient(to right, rgba(245,222,167,0.2), transparent);
-  }
+  /* ---------- Get the skill (centered, standalone) ---------- */
+  .get-skill { padding: 16px 0 72px; }
+  .get-skill-inner { max-width: 480px; margin: 0 auto; text-align: center; }
 
   .panel {
     background-color: var(--paper);
@@ -119,7 +118,7 @@
     border-radius: 14px;
     box-shadow: 0 8px 24px rgba(34,55,52,0.12);
     padding: 32px;
-    max-width: 480px;
+    text-align: left;
   }
   .panel .eyebrow { display: block; margin-bottom: 12px; color: var(--gold-ink); }
   .panel h2 { font-family: var(--serif); font-weight: 600; font-size: 1.125rem; color: var(--primary); margin-bottom: 8px; }
@@ -224,38 +223,40 @@
           <span class="eyebrow">Free skill &middot; AI Summit 2026</span>
           <h1>Your vision deserves more than a slide. Not a resolution you forget by February. Not a plan you write once and file away. <em>A rhythm you actually keep.</em></h1>
           <p class="sub">The Strategic Planning Waterfall cascades your 3-year 10x vision down through quarterly, monthly and weekly planning, one question at a time, built on 10x Is Easier Than 2x and Full Focus.</p>
+        </div>
+      </div>
+    </section>
 
-          <div class="hero-divider" aria-hidden="true"></div>
+    <section class="get-skill">
+      <div class="container get-skill-inner">
+        <div class="panel">
+          <span class="eyebrow">Get the skill</span>
+          <p class="panel-sub">Free. Runs inside Claude. Delivered in the next few minutes.</p>
 
-          <div class="panel">
-            <span class="eyebrow">Get the skill</span>
-            <p class="panel-sub">Free. Runs inside Claude. Delivered in the next few minutes.</p>
-
-            <div class="ghl-embed-wrap">
-              <iframe
-                src="https://www.calendar.maevefergusonconsulting.com/widget/form/R6GbLWBJUle1xkKv5fpn"
-                style="width:100%;height:100%;border:none;border-radius:8px"
-                id="inline-R6GbLWBJUle1xkKv5fpn"
-                data-layout="{'id':'INLINE'}"
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="AI Summit 2026 – Strategic Planning Waterfall Download"
-                data-height="736"
-                data-layout-iframe-id="inline-R6GbLWBJUle1xkKv5fpn"
-                data-form-id="R6GbLWBJUle1xkKv5fpn"
-                title="AI Summit 2026 – Strategic Planning Waterfall Download"
-              ></iframe>
-            </div>
+          <div class="ghl-embed-wrap">
+            <iframe
+              src="https://www.calendar.maevefergusonconsulting.com/widget/form/R6GbLWBJUle1xkKv5fpn"
+              style="width:100%;height:100%;border:none;border-radius:8px"
+              id="inline-R6GbLWBJUle1xkKv5fpn"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="AI Summit 2026 – Strategic Planning Waterfall Download"
+              data-height="736"
+              data-layout-iframe-id="inline-R6GbLWBJUle1xkKv5fpn"
+              data-form-id="R6GbLWBJUle1xkKv5fpn"
+              title="AI Summit 2026 – Strategic Planning Waterfall Download"
+            ></iframe>
           </div>
+        </div>
 
-          <div class="waitlist-cta">
-            <p>Want to talk it through instead?</p>
-            <a class="btn btn-secondary" href="https://www.maevefergusonconsulting.com/waitlist-page?utm_source=ai-summit-2026&utm_medium=event&utm_campaign=waitlist&utm_content=lead-magnet-page">Join the 1:1 waitlist &rarr;</a>
-          </div>
+        <div class="waitlist-cta">
+          <p>Want to talk it through instead?</p>
+          <a class="btn btn-secondary" href="https://www.maevefergusonconsulting.com/waitlist-page?utm_source=ai-summit-2026&utm_medium=event&utm_campaign=waitlist&utm_content=lead-magnet-page">Join the 1:1 waitlist &rarr;</a>
         </div>
       </div>
     </section>
