@@ -2,7 +2,7 @@
 
 A connected set of planning sessions that cascades from your three-year 10x vision all the way down to what you do this week — so every quarter, month, and week ladders up to the same north star instead of drifting on its own.
 
-Built on Dan Sullivan and Benjamin Hardy's **10x Is Easier Than 2x** and Michael Hyatt's **Full Focus** methodologies. You're guided one question at a time; each level reads the one above it. You walk away with a branded, interactive strategic plan and a spreadsheet tracker at every level.
+Draws on the ideas in Dan Sullivan and Benjamin Hardy's **10x Is Easier Than 2x** and on the monthly and weekly planning approach popularised by Michael Hyatt's **Full Focus** work. You're guided one question at a time; each level reads the one above it. You walk away with a branded, interactive strategic plan and a spreadsheet tracker at every level.
 
 **About 10 minutes to set up.**
 
@@ -54,9 +54,13 @@ Each one produces a branded, interactive HTML plan plus a spreadsheet tracker (e
 - `define-brand-voice` — the one-time brand intake that every other skill reads from
 - `annual-strategic-planner` — the 3-year 10x vision and annual initiatives
 - `quarterly-strategic-planner` — the 90-day 10x outcome
-- `monthly-gameplan` — the Big 3 and ideal week (Full Focus system)
+- `monthly-gameplan` — the Big 3 and ideal week
 - `weekly-plan` — the Friday review-and-plan rhythm
 
 ## Questions
 
 Reply to the email this came from, or reach out at [hello@maeveferguson.com](mailto:hello@maeveferguson.com).
+
+---
+
+<sub>These skills are an independent implementation of publicly published planning ideas. They are not affiliated with, endorsed by, or licensed from Michael Hyatt & Co. or The Strategic Coach, Inc. *Full Focus* and *10x Is Easier Than 2x* are the work of their respective authors and publishers.</sub>

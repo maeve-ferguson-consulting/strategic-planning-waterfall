@@ -1,15 +1,18 @@
 <!--
-WORKED EXAMPLE — not a default. Loosely based on a real consulting brand,
-rewritten with [Speaker] and [Company] tokens to make clear this is an
-illustration of a fully-populated BRAND.md, not a starting point for any
-new client.
+WORKED EXAMPLE — not a default, and not a starting point.
 
-This file conforms to references/brand-schema.md — the same contract
-build-carousel and build-story parse. Calling skills can read this to see
-the exact shape a complete BRAND.md takes.
+Northgate Financial is a FICTIONAL firm invented purely to show the shape of a
+fully-populated BRAND.md. Every name, quote, offer, price, and proof point below
+is made up. Do not copy any of it into a real BRAND.md — run the interview and
+capture the actual brand instead.
+
+This file conforms to references/brand-schema.md — the same contract the
+strategic-planning cascade (/plan-year, /plan-quarter, /plan-month, /plan-week)
+and the build-* skills parse. Read it to see the exact shape a complete
+BRAND.md takes.
 -->
 
-# BRAND — [Company]
+# BRAND — Northgate Financial
 
 The canonical brand context for this Claude Project. Conforms to `references/brand-schema.md`.
 
@@ -18,10 +21,10 @@ The canonical brand context for this Claude Project. Conforms to `references/bra
 ### `Brand Identity`
 
 ```yaml
-name: "[Speaker]"
-short_name: "[company]"
-monogram: "SP"
-tagline: "Engineering proven expertise into infrastructure that outlasts the algorithm"
+name: "Northgate Financial"
+short_name: "northgate"
+monogram: "NG"
+tagline: "Know your numbers before the season turns"
 ```
 
 ---
@@ -29,24 +32,24 @@ tagline: "Engineering proven expertise into infrastructure that outlasts the alg
 ### `Color Bases`
 
 ```yaml
-- name: "Forest"
+- name: "Slate"
   dark:
-    bg: "#223734"
-    text: "#F5F5DA"
-    accent: "#F5DEA7"
+    bg: "#1E252B"
+    text: "#EEF1F3"
+    accent: "#7FB2C4"
   light:
-    bg: "#F5F5DA"
-    text: "#1B1B1B"
-    accent: "#C4A44E"
-- name: "Noir"
+    bg: "#EEF1F3"
+    text: "#1E252B"
+    accent: "#2E6C82"
+- name: "Clay"
   dark:
-    bg: "#1B1B1B"
-    text: "#F5F5DA"
-    accent: "#F5DEA7"
+    bg: "#2B211E"
+    text: "#F3EFEE"
+    accent: "#D08B5F"
   light:
-    bg: "#F5F5DA"
-    text: "#1B1B1B"
-    accent: "#C4A44E"
+    bg: "#F3EFEE"
+    text: "#2B211E"
+    accent: "#A05A2C"
 ```
 
 ---
@@ -54,15 +57,15 @@ tagline: "Engineering proven expertise into infrastructure that outlasts the alg
 ### `Typography`
 
 ```yaml
-heading_font: "EB Garamond"
+heading_font: "Source Serif 4"
 heading_fallback: "Georgia, serif"
-body_font: "DM Sans"
-body_fallback: "Arial, sans-serif"
-label_font: "DM Sans"
+body_font: "Inter"
+body_fallback: "Helvetica, Arial, sans-serif"
+label_font: "Inter"
 weight_override: ""
 fontsource_packages:
-  - "eb-garamond"
-  - "dm-sans"
+  - "source-serif-4"
+  - "inter"
 ```
 
 ---
@@ -70,22 +73,21 @@ fontsource_packages:
 ### `Voice Rules`
 
 ```yaml
-language_variant: "en-GB"
-em_dashes: "replace_with_comma"
+language_variant: "en-US"
+em_dashes: "allow"
 emojis: "none"
 banned_words:
   - "leverage"
   - "synergy"
-  - "unlock potential"
+  - "financial freedom"
   - "game-changing"
-  - "in today's fast-paced world"
+  - "in today's economy"
   - "let's dive in"
-  - "quiz funnel"
+  - "passive income"
 signature_phrases:
-  - "Data is the only moat"
-  - "Infrastructure, not tactics"
-  - "From respected but replaceable to Category of One"
-  - "The diagnostic is the mechanism. The data is the asset."
+  - "Cash is a season, not a surprise"
+  - "The books tell you before the bank does"
+  - "Price the job, not the hour"
 person: "second"
 ```
 
@@ -93,24 +95,18 @@ person: "second"
 
 ### `Vision Tethers`
 
-- **The Great IP-to-Data Transition** — the most valuable asset in a knowledge business is no longer intellectual property, it is proprietary first-party data. Every piece traces back to this shift.
-- **Infrastructure, not tactics** — permanent infrastructure that compounds over years, never campaigns that expire.
-- **Data is the only moat** — the moat that survives AI; leads are the byproduct, the data is the asset.
-- **From respected to Category of One** — moving the speaker from one option among many to the reference point an industry is measured against.
-- **Legacy that outlives the algorithm** — engineering permanence in a world built for impermanence; answer to a 10-year horizon.
+- **Cash is a season, not a surprise** — trades businesses fail on timing, not margin. Every piece traces back to seeing the cash cycle early enough to act on it.
+- **Price the job, not the hour** — moving owners off hourly thinking and onto job-level profitability.
+- **The owner should not be the bookkeeper** — the work that only the owner can do is never data entry.
+- **Boring beats clever** — durable financial habits over tax tricks and one-off schemes.
 
 ---
 
 ### `Effects`
 
 ```yaml
-metallic_accent: true
-metallic_stops:
-  - "#8A6D1F"
-  - "#C4A44E"
-  - "#F5DEA7"
-  - "#C4A44E"
-  - "#8A6D1F"
+metallic_accent: false
+metallic_stops: []
 ```
 
 ---
@@ -118,12 +114,12 @@ metallic_stops:
 ### `Testimonial Bank`
 
 ```yaml
-- quote: "She rebuilt our entire authority engine in fifteen days. I have never worked with anyone who sees the whole board like this."
-  attribution: "[Client A]"
-  title: "#1 NYT bestselling author"
-- quote: "The data asset alone changed our exit conversation. We did not know we were sitting on it."
-  attribution: "[Client B]"
-  title: "Founder, nine-figure platform"
+- quote: "We found out we were losing money on our biggest client. Two quarters later that same client is our most profitable one."
+  attribution: "Dana Whitfield"
+  title: "Owner, Whitfield Mechanical (fictional)"
+- quote: "I stopped guessing at payroll week. That alone was worth the engagement."
+  attribution: "Marcus Ellery"
+  title: "Founder, Ellery Roofing (fictional)"
 ```
 
 ---
@@ -131,15 +127,15 @@ metallic_stops:
 ### `Offer Bank`
 
 ```yaml
-- name: "Authority Scan"
-  one_liner: "1-day intensive — IP extraction, positioning brief, diagnostic blueprint, 90-day roadmap"
-  url: "https://example.com/authority-scan"
-- name: "IP-to-Diagnostic Intensive"
-  one_liner: "60-day done-for-you build — full diagnostic infrastructure, routing, alerts"
-  url: "https://example.com/intensive"
-- name: "Authority Architect"
-  one_liner: "12-month complete build — diagnostic + intelligence engine + data partnership"
-  url: "https://example.com/architect"
+- name: "Numbers Review"
+  one_liner: "Half-day diagnostic — job costing audit, cash cycle map, and a 90-day cleanup plan"
+  url: "https://example.com/numbers-review"
+- name: "Fractional CFO"
+  one_liner: "Monthly retainer — forecasting, pricing reviews, and a standing owner's meeting"
+  url: "https://example.com/fractional-cfo"
+- name: "Season Planning Intensive"
+  one_liner: "Annual engagement — build the year's cash plan before the busy season starts"
+  url: "https://example.com/season-planning"
 ```
 
 ---
@@ -150,34 +146,34 @@ metallic_stops:
 
 ### `Voice Texture`
 
-**Voice summary:** Intense, magnetic, authoritative. Fun, intriguing, smart. Controlled, not chaotic. High energy delivered with precision.
+**Voice summary:** Plain, steady, unhurried. Speaks like a trusted advisor who has seen this exact problem forty times and is not alarmed by it. Concrete over abstract. Numbers over adjectives.
 
-**Stance toward the reader:** Peer. Talks to people who are already authorities and treats them as authorities who haven't yet seen the next layer.
+**Stance toward the reader:** Peer with a specialty. Talks to competent operators who run real crews and know their trade, and assumes they simply haven't been shown their own financial picture clearly.
 
-**Allowed stylistic moves:** One-sentence paragraphs. Direct rhetorical questions. Sentence fragments for emphasis. (Em-dashes are banned here — see Voice Rules — but other brands keep them; this is per-brand.)
+**Allowed stylistic moves:** Short declaratives. A specific dollar figure or date in place of a vague claim. The occasional direct question. Em-dashes are allowed here — other brands ban them; this is per-brand.
 
 **On-brand example:**
-> The knowledge economy has collapsed. Not slowly eroding. Collapsed. The natural response was to rush to AI. But the moment you load your IP into a GPT, it is no longer proprietary. You gave away everything you built and got nothing back.
+> Most shops we meet are profitable on paper and broke in February. That isn't a margin problem. It's a timing problem, and timing problems are fixable once you can see thirteen weeks out instead of two.
 
 **Off-brand example (and why):**
-> In today's fast-paced AI landscape, it's important to leverage your proprietary data to unlock new growth opportunities. — every AI-tell phrase in one sentence; sounds like everyone, not like this brand.
+> In today's economy, it's important to leverage your financial data to unlock game-changing growth. — vague, borrowed, and says nothing a roofer could act on Monday morning.
 
 ---
 
 ### `Audience`
 
-**Primary:** Established authorities aged 40–70 with proven methodology that isn't systematised. Authors, consultants, keynote speakers, executives. $500K–$50M+ revenue. Already has audience, IP, credibility. Feels they should be further ahead given what they've built.
+**Primary:** Owner-operators of construction, mechanical, and specialty trades businesses. $1M–$20M revenue, 8–60 employees. Usually second-generation or ten-plus years in. Has a bookkeeper, has never had a CFO.
 
-**Exclude:** Anyone without an established audience. Anyone "building a personal brand." Beginners. Anyone who negotiates on price before understanding value.
+**Exclude:** Pre-revenue startups. Anyone looking for tax avoidance schemes. Businesses without job-level records to work from.
 
-**Their language:** "My IP only works when I'm present." "I'm the bottleneck in my own business." "There has to be a smarter way than explaining myself repeatedly."
+**Their language:** "I don't know which jobs actually made money." "We're busy but there's never cash." "My bookkeeper gives me reports I don't read."
 
 ---
 
 ### `Reference Library`
 
-**Named concepts:** The Data Funnel — infrastructure that captures proprietary first-party data; leads are a byproduct. The Three Forces — knowledge-economy collapse, AI Saviour Trap, insatiable data demand.
+**Named concepts:** The Thirteen-Week View — a rolling cash forecast that ends payroll-week guessing. The Job Margin Ladder — ranking every completed job by true margin to find the work worth chasing.
 
-**Signature stories:** The hospital data deal — $100M paid for patient data, used to anchor what an engaged audience's structured data is worth. The 15-day delivery — proof of premium speed without quality loss.
+**Signature stories:** The February Call — the annual pattern of profitable shops running out of cash in the slow month, used to introduce the cash cycle. The Unprofitable Flagship — the biggest client that turned out to be the worst margin.
 
-**Proof points:** 23% reduction in 30-day readmissions (verified). 100+ data points captured per assessment completion.
+**Proof points:** Average 19-day reduction in receivable days across the first two quarters (fictional illustrative figure).

@@ -1,6 +1,6 @@
 # BRAND.md Schema
 
-The content-build skills (`build-carousel`, `build-story`) and the strategic-planning cascade (`/plan-year`, `/plan-quarter`, `/plan-month`, `/plan-week`) read brand context from a single document called `BRAND.md` that lives in the client's Claude Project Knowledge. This is that document's schema.
+The strategic-planning cascade (`/plan-year`, `/plan-quarter`, `/plan-month`, `/plan-week`) — along with any `build-*` content skill installed alongside it — reads brand context from a single document called `BRAND.md` that lives in the client's Claude Project Knowledge. This is that document's schema.
 
 The matching `define-brand-voice` skill produces a `BRAND.md` in this shape via an interactive interview. This file is the contract between the two.
 
@@ -70,7 +70,7 @@ metallic_stops:
 ```
 
 ### `Testimonial Bank`
-Verified client quotes for T5 (Quote) slides. Verbatim - no paraphrasing.
+Verified client quotes, used wherever a skill needs social proof. Verbatim - no paraphrasing.
 ```yaml
 - quote: "<exact words>"
   attribution: "<name>"

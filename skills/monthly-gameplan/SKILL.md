@@ -1,9 +1,9 @@
 ---
 name: monthly-gameplan
-description: "Run a monthly gameplan session using the Full Focus planning system so the quarter's 10x outcome stays on track - reviews the month just ended, sets the Big 3 goals tied to the quarterly outcome, designs the ideal week, and locks the weekly rhythm. Use this whenever the user wants to set or review monthly goals, their Big 3, or an ideal week, or asks how to hit a quarterly target - even if they don't say \"plan-month\". Triggers on /plan-month, \"monthly gameplan\", \"monthly review\", \"plan the month\", \"monthly planning\", \"set my Big 3\", or \"how do I hit my quarterly goal\". Reads the quarterly plan first. This is the month level of the strategy cascade (/plan-year -> /plan-quarter -> /plan-month -> /plan-week) - goal and execution planning, NOT content calendars or what-to-post planning (use plan-content for those). Brand-agnostic: reads all client context from BRAND.md. Produces a branded interactive HTML gameplan plus a spreadsheet tracker. One question at a time."
+description: "Run a monthly gameplan session so the quarter's 10x outcome stays on track - reviews the month just ended, sets the Big 3 goals tied to the quarterly outcome, designs the ideal week, and locks the weekly rhythm. Use this whenever the user wants to set or review monthly goals, their Big 3, or an ideal week, or asks how to hit a quarterly target - even if they don't say \"plan-month\". Triggers on /plan-month, \"monthly gameplan\", \"monthly review\", \"plan the month\", \"monthly planning\", \"set my Big 3\", or \"how do I hit my quarterly goal\". Reads the quarterly plan first. This is the month level of the strategy cascade (/plan-year -> /plan-quarter -> /plan-month -> /plan-week) - goal and execution planning, NOT content calendars or what-to-post planning (use plan-content for those). Brand-agnostic: reads all client context from BRAND.md. Produces a branded interactive HTML gameplan plus a spreadsheet tracker. One question at a time."
 ---
 
-# MONTHLY GAMEPLAN — FULL FOCUS SYSTEM
+# MONTHLY GAMEPLAN
 
 Universal monthly execution planner. Reads the quarter's ONE 10x outcome and turns it into the Big 3 goals, an ideal week, and a weekly rhythm for the month ahead. Brand-agnostic: every client specific is read at runtime from `BRAND.md`.
 
@@ -11,7 +11,7 @@ This skill sits at LEVEL 3 of a four-level planning cascade. It READS the quarte
 
 ## How this skill reads brand context
 
-Brand-agnostic. Every brand decision (company name, owner name, colors, fonts, voice, language variant) is read at runtime from a `BRAND.md` document in the user's Claude Project Knowledge, per the schema in `references/brand-schema.md` (shared with `build-carousel` and `build-story`).
+Brand-agnostic. Every brand decision (company name, owner name, colors, fonts, voice, language variant) is read at runtime from a `BRAND.md` document in the user's Claude Project Knowledge, per the schema in `references/brand-schema.md` (shared across every skill in the cascade).
 
 Throughout this document, "the company" and "the owner" mean the values read from `BRAND.md > Brand Identity` (`name` and the owner's name). The filename token is `BRAND.md > Brand Identity > short_name`. Never hardcode a company or person name. All generated prose and the HTML artifact follow `BRAND.md > Voice Rules` (`language_variant` and `em_dashes` policy).
 
@@ -287,9 +287,11 @@ The weekly plan for every Friday this month should reference the Big 3 from this
 
 ---
 
-## METHOD NOTES (Full Focus)
+## METHOD NOTES
 
-This skill runs on the Full Focus planning system: the **Big 3** monthly goals, the **Ideal Week**, the **Weekly Preview / Weekly Review** rhythm, the **Daily Big 3**, and the **Monday Morning Questions**. The spine is: challenge ambition against reality, **eliminate before you add**, and decide **WHO before HOW**. Keep that method intact regardless of which business the plan serves — the specificity comes from the client's context, not from the methodology.
+This skill runs a monthly cadence built from a small set of moving parts: the **Big 3** monthly goals, the **Ideal Week**, the weekly preview and review rhythm, the **Daily Big 3**, and a short set of Monday morning questions. The spine is: challenge ambition against reality, **eliminate before you add**, and decide **WHO before HOW**. Keep that method intact regardless of which business the plan serves — the specificity comes from the client's context, not from the methodology.
+
+**Attribution.** This cadence draws on the monthly and weekly planning approach popularised by Michael Hyatt's *Full Focus* work, and the annual and quarterly levels of the cascade draw on Dan Sullivan and Benjamin Hardy's *10x Is Easier Than 2x*. These skills are an independent implementation, not affiliated with, endorsed by, or licensed from Michael Hyatt & Co. or The Strategic Coach, Inc.
 
 ---
 

@@ -1,8 +1,8 @@
 <!--
 BRAND.md — the single brand-context document every other skill reads.
 
-This file conforms to references/brand-schema.md, the contract shared with
-build-carousel, build-story, and any future build-* skill. Keep them in sync.
+This file conforms to references/brand-schema.md, the contract shared with the
+planning cascade and any build-* content skill. Keep them in sync.
 
 HOW SKILLS READ THIS FILE
 - A builder skill looks for the four REQUIRED sections by their exact heading

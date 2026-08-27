@@ -1,13 +1,13 @@
 ---
 name: define-brand-voice
-description: "ALWAYS use this skill for any brand-context task — never gather brand voice, tone, audience, colors, fonts, offers, or banned words conversationally yourself. Produces the canonical BRAND.md every build-* skill reads; use it even for simple-looking asks. Three triggers: (1) USER asks — /brand, /voice, \"set up my brand voice\", \"onboard a client's brand\", or update saved brand details (accent color, hex, banned word, CTA). (2) YOU are about to write content, render a visual, or draft a CTA but don't know the tone, colors, fonts, audience, or whether wording is on-brand — stop and run this, don't guess. (3) ANOTHER skill (build-carousel, build-story, write-newsletter) needs brand context and finds BRAND.md missing or a required section empty. One-question interview; pulls from existing content first; per-section stub mode; additive. Do NOT use for: reading an existing BRAND.md, rendering from a defined brand, translating content, competitor research, or a rebrand audit."
+description: "ALWAYS use this skill for any brand-context task — never gather brand voice, tone, audience, colors, fonts, offers, or banned words conversationally yourself. Produces the canonical BRAND.md every other skill reads; use it even for simple-looking asks. Three triggers: (1) USER asks — /brand, /voice, \"set up my brand voice\", \"onboard a client's brand\", or update saved brand details (accent color, hex, banned word, CTA). (2) YOU are about to write content, render a visual, or draft a CTA but don't know the tone, colors, fonts, audience, or whether wording is on-brand — stop and run this, don't guess. (3) ANOTHER skill (the planning cascade, or any build-* content skill installed alongside it) needs brand context and finds BRAND.md missing or a required section empty. One-question interview; pulls from existing content first; per-section stub mode; additive. Do NOT use for: reading an existing BRAND.md, rendering from a defined brand, translating content, competitor research, or a rebrand audit."
 ---
 
 # DEFINE BRAND VOICE
 
 A universal brand-context intake skill. Output: a single `BRAND.md` the user keeps in their Claude Project Knowledge so every other skill reads brand context instead of hardcoding it or re-asking for it.
 
-`BRAND.md` conforms to `references/brand-schema.md` — the contract shared with `build-carousel`, `build-story`, and any future `build-*` skill. **That schema file is authoritative. If it ever diverges from this skill, the schema wins and this skill must be updated to match.** A copy lives in this skill's `references/` and must stay byte-aligned with the builders' copy.
+`BRAND.md` conforms to `references/brand-schema.md` — the contract shared with every consuming skill: the planning cascade here, and any `build-*` content skill installed alongside it. **That schema file is authoritative. If it ever diverges from this skill, the schema wins and this skill must be updated to match.** A copy lives in each skill's `references/` and all copies must stay byte-aligned.
 
 ---
 
@@ -15,7 +15,7 @@ A universal brand-context intake skill. Output: a single `BRAND.md` the user kee
 
 `BRAND.md` is the contract. Anyone who needs brand context — the user, Claude itself, or another skill — reads it. Anyone who finds it missing or thin invokes `define-brand-voice` to fill the gap rather than guessing.
 
-A builder skill (build-carousel, build-story, …) looks for four **required** sections by their exact heading: `### \`Brand Identity\``, `### \`Color Bases\``, `### \`Typography\``, `### \`Voice Rules\``. The first occurrence of each heading is the source of truth. If a required section is missing **or its body is empty**, the builder stops and tells the user to run this skill. Builders deliberately refuse to substitute their own defaults — shipping a carousel in the wrong brand is worse than shipping nothing.
+A consuming skill (`/plan-year`, `/plan-quarter`, any `build-*` skill, …) looks for four **required** sections by their exact heading: `### \`Brand Identity\``, `### \`Color Bases\``, `### \`Typography\``, `### \`Voice Rules\``. The first occurrence of each heading is the source of truth. If a required section is missing **or its body is empty**, the consuming skill stops and tells the user to run this skill. Consumers deliberately refuse to substitute their own defaults — shipping a plan in the wrong brand is worse than shipping nothing.
 
 This produces the central design constraint of this skill:
 
@@ -81,9 +81,9 @@ One question at a time:
 
 Frame the choice around the required-section floor, not section count:
 
-> "BRAND.md has four **required** parts the visual builders can't run without — your identity, a colour set, fonts, and voice rules — plus optional parts that make output sharper over time. Three ways to do this:
+> "BRAND.md has four **required** parts nothing else can run without — your identity, a colour set, fonts, and voice rules — plus optional parts that make output sharper over time. Three ways to do this:
 >
-> **A. Minimum viable, fast (~10 min).** We lock the four required parts so you can immediately build carousels and stories. Anything you're unsure about, I'll set a sensible starter you can refine later. You're never blocked.
+> **A. Minimum viable, fast (~10 min).** We lock the four required parts so you can start planning straight away. Anything you're unsure about, I'll set a sensible starter you can refine later. You're never blocked.
 >
 > **B. Full pass, deep (~45–60 min).** Required parts plus vision, offers, testimonials, voice texture, audience — the whole document in one sitting.
 >
@@ -116,7 +116,7 @@ Floor: `name`, `short_name`, `monogram` must be non-empty. If the user won't giv
 1. "Do you have brand colours? Paste hex codes or upload a brand board. If not, describe the feel in a sentence — earthy, editorial, high-contrast, mono-with-one-accent — and I'll draft a base."
 2. Draft at least one named base with **dark and light variants**, each having `bg`, `text`, `accent` as valid `#RRGGBB`. Present the whole base in one confirmation turn: "Here's a base called Forest — dark and light. Work, or adjust?"
 
-Floor: if the user has no palette and can't describe one, write the neutral `Default` base from the template **keeping its `<!-- PROVISIONAL: … -->` marker**, and say: "I've set a neutral starter palette so you can build today — your builds will look generic and the builder will warn you until you set real colours. Swap it whenever they exist." If the user *does* give real colours, write them and **delete the PROVISIONAL marker** from that section.
+Floor: if the user has no palette and can't describe one, write the neutral `Default` base from the template **keeping its `<!-- PROVISIONAL: … -->` marker**, and say: "I've set a neutral starter palette so you're not blocked today — your plans will look generic and I'll keep flagging it until you set real colours. Swap it whenever they exist." If the user *does* give real colours, write them and **delete the PROVISIONAL marker** from that section.
 
 ### REQUIRED 3 — `Typography`
 1. "Heading font? If unsure, say the feel — elegant serif, modern sans, editorial display — and I'll pick a Google-available webfont."
