@@ -86,13 +86,13 @@
   .tagline { font-family: var(--serif); font-style: italic; font-size: 0.9375rem; color: rgba(245,245,218,0.4); }
 
   /* ---------- Hero ---------- */
-  .hero { position: relative; padding: 48px 0 64px; overflow: hidden; }
+  .hero { position: relative; padding: 72px 0 96px; overflow: hidden; }
   .hero-watermark {
     position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
     font-family: var(--serif); font-weight: 600; font-size: 42rem; line-height: 1;
     color: rgba(245,222,167,0.06); white-space: nowrap; pointer-events: none; z-index: 0;
   }
-  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: start; }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 360px 1fr; gap: 88px; align-items: start; }
   .hero-photo {
     display: flex; align-items: stretch; gap: 14px;
     border: 1.5px solid var(--gold-deep); padding: 12px; border-radius: 2px;
@@ -106,13 +106,18 @@
     letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep);
     white-space: nowrap; align-self: center;
   }
-  .hero .eyebrow { display: block; margin-bottom: 20px; }
+  .hero .eyebrow { display: block; margin-bottom: 24px; }
   .hero h1 {
-    font-family: var(--serif); font-weight: 600; font-size: clamp(2.25rem, 4.5vw, 3rem);
-    line-height: 1.15; color: var(--cream); margin-bottom: 20px;
+    font-family: var(--serif); font-weight: 400; font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.15; color: var(--cream); margin-bottom: 28px;
   }
-  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 600; }
+  .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
   .hero .sub { max-width: 48ch; margin-bottom: 8px; }
+
+  .hero-divider {
+    margin: 40px 0; max-width: 480px;
+    height: 1px; background: linear-gradient(to right, rgba(245,222,167,0.2), transparent);
+  }
 
   .panel {
     background-color: var(--paper);
@@ -120,7 +125,6 @@
     border-radius: 14px;
     box-shadow: 0 8px 24px rgba(34,55,52,0.12);
     padding: 32px;
-    margin-top: 32px;
     max-width: 480px;
   }
   .panel .eyebrow { display: block; margin-bottom: 12px; color: var(--gold-ink); }
@@ -142,7 +146,7 @@
   .btn-secondary:hover { border-color: var(--gold-light); box-shadow: 0 8px 24px rgba(201,169,110,0.2); }
   .btn:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 3px; }
 
-  .waitlist-cta { margin-top: 20px; }
+  .waitlist-cta { margin-top: 28px; }
   .waitlist-cta p { font-size: 0.8125rem; color: rgba(245,245,218,0.55); margin-bottom: 12px; }
 
   /* ---------- What's inside ---------- */
@@ -189,7 +193,6 @@
         <div class="monogram" aria-hidden="true">MF</div>
         <div class="wordmark-group">
           <div class="wordmark">Maeve Ferguson</div>
-          <div class="wordmark-sub">The Authority Architect</div>
         </div>
       </div>
       <div class="tagline">Brilliance Without Infrastructure Is Wasted</div>
@@ -207,8 +210,10 @@
 
         <div>
           <span class="eyebrow">Free skill &middot; AI Summit 2026</span>
-          <h1>Your 10x vision, <em>cascaded to this week.</em></h1>
+          <h1>Your vision deserves more than a slide. Not a resolution you forget by February. Not a plan you write once and file away. <em>A rhythm you actually keep.</em></h1>
           <p class="sub">The Strategic Planning Waterfall cascades your 3-year 10x vision down through quarterly, monthly and weekly planning, one question at a time, built on 10x Is Easier Than 2x and Full Focus.</p>
+
+          <div class="hero-divider" aria-hidden="true"></div>
 
           <div class="panel">
             <span class="eyebrow">Get the skill</span>
@@ -237,7 +242,7 @@
 
           <div class="waitlist-cta">
             <p>Want to talk it through instead?</p>
-            <a class="btn btn-secondary" href="https://www.maevefergusonconsulting.com/waitlist-page?utm_source=ai-summit-2026&utm_medium=event&utm_campaign=waitlist&utm_content=lead-magnet-page">Join the 1:1 waitlist</a>
+            <a class="btn btn-secondary" href="https://www.maevefergusonconsulting.com/waitlist-page?utm_source=ai-summit-2026&utm_medium=event&utm_campaign=waitlist&utm_content=lead-magnet-page">Join the 1:1 waitlist &rarr;</a>
           </div>
         </div>
       </div>
