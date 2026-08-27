@@ -29,6 +29,7 @@
     --gold-dark: #C4A44E;
     --gold-light: #FBF0D0;
     --gold-ink: #7E6839;
+    --gold-deep: #C9A96E;
     --ink: #1B1B1B;
     --dark-deep: #1A2B28;
     --dark-mid: #2A433F;
@@ -85,11 +86,25 @@
   .tagline { font-family: var(--serif); font-style: italic; font-size: 0.9375rem; color: rgba(245,245,218,0.4); }
 
   /* ---------- Hero ---------- */
-  .hero { padding: 48px 0 64px; }
-  .hero-grid { display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: start; }
+  .hero { position: relative; padding: 48px 0 64px; overflow: hidden; }
+  .hero-watermark {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: var(--serif); font-weight: 600; font-size: 42rem; line-height: 1;
+    color: rgba(245,222,167,0.06); white-space: nowrap; pointer-events: none; z-index: 0;
+  }
+  .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 360px 1fr; gap: 64px; align-items: start; }
+  .hero-photo {
+    display: flex; align-items: stretch; gap: 14px;
+    border: 1.5px solid var(--gold-deep); padding: 12px; border-radius: 2px;
+  }
   .hero-photo img {
-    width: 100%; height: auto; display: block; border-radius: 10px;
-    box-shadow: 0 8px 28px rgba(15,26,23,0.5);
+    width: 100%; height: auto; display: block; flex: 1;
+  }
+  .hero-photo-label {
+    writing-mode: vertical-rl; transform: rotate(180deg);
+    font-family: var(--sans); font-size: 0.6875rem; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep);
+    white-space: nowrap; align-self: center;
   }
   .hero .eyebrow { display: block; margin-bottom: 20px; }
   .hero h1 {
@@ -123,8 +138,8 @@
   }
   .btn-primary { background-color: var(--gold); color: var(--ink); }
   .btn-primary:hover { background-color: var(--gold-light); box-shadow: 0 10px 36px rgba(201,169,110,0.3); }
-  .btn-ghost { background-color: transparent; color: var(--gold-dark); border: 1px solid var(--gold-dark); }
-  .btn-ghost:hover { color: var(--gold-light); border-color: var(--gold-light); }
+  .btn-secondary { background-color: var(--primary); color: var(--cream); border: 1.5px solid var(--gold-deep); border-radius: 2px; }
+  .btn-secondary:hover { border-color: var(--gold-light); box-shadow: 0 8px 24px rgba(201,169,110,0.2); }
   .btn:focus-visible { outline: 2px solid var(--gold-dark); outline-offset: 3px; }
 
   .waitlist-cta { margin-top: 20px; }
@@ -183,9 +198,11 @@
 
   <main>
     <section class="hero">
+      <div class="hero-watermark" aria-hidden="true">MF</div>
       <div class="container hero-grid">
         <div class="hero-photo">
           <img src="assets/maeve-ferguson.jpg" alt="Maeve Ferguson">
+          <span class="hero-photo-label">The Authority Architect</span>
         </div>
 
         <div>
@@ -220,7 +237,7 @@
 
           <div class="waitlist-cta">
             <p>Want to talk it through instead?</p>
-            <a class="btn btn-ghost" href="https://www.maevefergusonconsulting.com/waitlist-page?utm_source=ai-summit-2026&utm_medium=event&utm_campaign=waitlist&utm_content=lead-magnet-page">Join the 1:1 waitlist</a>
+            <a class="btn btn-secondary" href="https://www.maevefergusonconsulting.com/waitlist-page?utm_source=ai-summit-2026&utm_medium=event&utm_campaign=waitlist&utm_content=lead-magnet-page">Join the 1:1 waitlist</a>
           </div>
         </div>
       </div>
