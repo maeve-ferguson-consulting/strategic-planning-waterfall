@@ -1,5 +1,5 @@
 ---
-name: quarterly-strategic-planner
+name: plan-quarter
 description: "Run a 90-minute quarterly 10x review and planning session using Dan Sullivan's methodology - reviews the past quarter, eliminates 2x thinking, and sets the ONE 10x outcome for the next quarter with monthly milestones and ownership. Use this whenever the user mentions quarterly planning, a quarterly review, the next 90 days, or a 10x review - even if they don't say \"quarterly plan\". Triggers on /plan-quarter, \"quarterly planning\", \"quarterly review\", \"Q2 planning\", \"next quarter\", \"plan the next 90 days\", \"quarterly strategy\", or \"10x review\". Reads the upstream annual plan first. This is the quarter level of the strategy cascade (/plan-year -> /plan-quarter -> /plan-month -> /plan-week); not for content/editorial calendars (use plan-content) or monthly/weekly execution (use /plan-month and /plan-week). Brand-agnostic: reads all client context from BRAND.md. Produces a branded interactive HTML plan plus an OKR/milestone tracker. One question at a time. WHO before HOW."
 ---
 
@@ -33,13 +33,13 @@ This skill produces a branded HTML artifact, so it needs the full brand precheck
    - `Voice Rules` (language variant, em-dash policy)
 3. If any required section is missing or empty, stop and tell the user this, in your own words:
    - The plan can't be styled without their brand context.
-   - Their next step is to run the `define-brand-voice` skill (a separate ~15-minute brand-capture interview) and save the resulting `BRAND.md` to their Claude Project Knowledge.
+   - Their next step is to run `/brand` (a separate ~15-minute brand-capture interview) and save the resulting `BRAND.md` to their Claude Project Knowledge.
    - Once that's in place, they can come back and re-run the same prompt.
-   - Do NOT silently substitute defaults. Do NOT chain-invoke `define-brand-voice` automatically - tell the user it's their next step.
+   - Do NOT silently substitute defaults. Do NOT chain-invoke `/brand` automatically - tell the user it's their next step.
 4. If a required section is present but marked PROVISIONAL (a `<!-- PROVISIONAL: ... -->` comment between its heading and its ```yaml fence - see `references/brand-schema.md`), do NOT silently proceed. Tell the user, in your own words:
    - Which required section(s) are still placeholder defaults, and that the plan will therefore look generic, not like their brand.
-   - To get real on-brand output, the fix is to run `define-brand-voice` again and set those values, then re-run.
-   - If they explicitly say to proceed anyway ("render it anyway", "I know, just do it"), proceed using the placeholder values. Otherwise stop here. Do NOT chain-invoke `define-brand-voice` automatically.
+   - To get real on-brand output, the fix is to run `/brand` again and set those values, then re-run.
+   - If they explicitly say to proceed anyway ("render it anyway", "I know, just do it"), proceed using the placeholder values. Otherwise stop here. Do NOT chain-invoke `/brand` automatically.
 5. If all required sections are present and none are PROVISIONAL, proceed.
 
 The facilitation session itself can begin while you confirm brand context - but do NOT render the HTML or spreadsheet until the precheck passes.
@@ -260,9 +260,9 @@ Default: no notification step. If the user wants one, offer a plain-text summary
 
 | Skill | Direction | Relationship |
 |-------|-----------|-------------|
-| annual-strategic-planner (/plan-year) | UPSTREAM | Annual 10x vision and three commitments. Read first. |
-| monthly-gameplan (/plan-month) | DOWNSTREAM | Reads this plan's CASCADE REFERENCE block: THE ONE outcome, this month's milestone (from the 3 monthly milestones), weekly metrics, Monday Morning Questions, ownership, elimination list. Quarterly goals break into monthly execution. |
-| weekly-plan (/plan-week) | DOWNSTREAM (via /plan-month) | The monthly Big 3 (derived from the quarterly milestone) break into weekly accountability. |
+| `/plan-year` | UPSTREAM | Annual 10x vision and three commitments. Read first. |
+| `/plan-month` | DOWNSTREAM | Reads this plan's CASCADE REFERENCE block: THE ONE outcome, this month's milestone (from the 3 monthly milestones), weekly metrics, Monday Morning Questions, ownership, elimination list. Quarterly goals break into monthly execution. |
+| `/plan-week` | DOWNSTREAM (via `/plan-month`) | The monthly Big 3 (derived from the quarterly milestone) break into weekly accountability. |
 
 **The monthly gameplan for Month 1 reads the Month 1 milestone from this quarterly plan's CASCADE REFERENCE block. Month 2 reads the Month 2 milestone. Month 3 reads Month 3. Each `/plan-month` session starts by confirming: "The quarterly ONE outcome is [X]. This month's milestone is [Y]. Let's make sure we hit it."**
 

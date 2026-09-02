@@ -1,5 +1,5 @@
 ---
-name: define-brand-voice
+name: brand
 description: "ALWAYS use this skill for any brand-context task — never gather brand voice, tone, audience, colors, fonts, offers, or banned words conversationally yourself. Produces the canonical BRAND.md every other skill reads; use it even for simple-looking asks. Three triggers: (1) USER asks — /brand, /voice, \"set up my brand voice\", \"onboard a client's brand\", or update saved brand details (accent color, hex, banned word, CTA). (2) YOU are about to write content, render a visual, or draft a CTA but don't know the tone, colors, fonts, audience, or whether wording is on-brand — stop and run this, don't guess. (3) ANOTHER skill (the planning cascade, or any build-* content skill installed alongside it) needs brand context and finds BRAND.md missing or a required section empty. One-question interview; pulls from existing content first; per-section stub mode; additive. Do NOT use for: reading an existing BRAND.md, rendering from a defined brand, translating content, competitor research, or a rebrand audit."
 ---
 
@@ -13,13 +13,13 @@ A universal brand-context intake skill. Output: a single `BRAND.md` the user kee
 
 ## HOW THIS SKILL IS USED
 
-`BRAND.md` is the contract. Anyone who needs brand context — the user, Claude itself, or another skill — reads it. Anyone who finds it missing or thin invokes `define-brand-voice` to fill the gap rather than guessing.
+`BRAND.md` is the contract. Anyone who needs brand context — the user, Claude itself, or another skill — reads it. Anyone who finds it missing or thin invokes `/brand` to fill the gap rather than guessing.
 
 A consuming skill (`/plan-year`, `/plan-quarter`, any `build-*` skill, …) looks for four **required** sections by their exact heading: `### \`Brand Identity\``, `### \`Color Bases\``, `### \`Typography\``, `### \`Voice Rules\``. The first occurrence of each heading is the source of truth. If a required section is missing **or its body is empty**, the consuming skill stops and tells the user to run this skill. Consumers deliberately refuse to substitute their own defaults — shipping a plan in the wrong brand is worse than shipping nothing.
 
 This produces the central design constraint of this skill:
 
-> **The required-section floor: define-brand-voice must never produce or leave a `BRAND.md` whose four required sections are missing or empty — not even on the fastest pass, not even in stub mode.** If the user skips or runs out of time, write the safe starter values from `references/brand-template.md` (marked `DEFAULT`), tell the user plainly that you did, and move on. A `DEFAULT` is an honest placeholder the user is told about and can refine later — it is the on-ramp that keeps them from being dead-ended. It is *not* the builder silently faking a brand.
+> **The required-section floor: `/brand` must never produce or leave a `BRAND.md` whose four required sections are missing or empty — not even on the fastest pass, not even in stub mode.** If the user skips or runs out of time, write the safe starter values from `references/brand-template.md` (marked `DEFAULT`), tell the user plainly that you did, and move on. A `DEFAULT` is an honest placeholder the user is told about and can refine later — it is the on-ramp that keeps them from being dead-ended. It is *not* the builder silently faking a brand.
 
 Any required section you fill with default/starter values **must carry the `<!-- PROVISIONAL: … -->` marker** (placed between the section heading and its ```yaml fence, per `references/brand-schema.md`). Builders detect that marker and soft-stop — they warn the user the output will look generic and offer "render anyway" rather than silently shipping placeholder brand as if it were real. **Remove the marker the instant the user supplies real values for that section** (this pass or a later one). The marker is what makes "never dead-ended" coexist with "never silently wrong-brand": empty = hard stop, provisional = warned soft stop, real = clean proceed.
 
@@ -163,12 +163,12 @@ Named frameworks/concepts, signature stories (title + one-liner), reusable proof
 1. Read `references/brand-template.md`. Produce `BRAND.md` in that exact shape — section headings and YAML keys verbatim per `references/brand-schema.md`.
 2. **Enforce the floor:** before writing, verify `Brand Identity`, `Color Bases`, `Typography`, `Voice Rules` are all present and non-empty. Any gap → fill with the template's `DEFAULT` value, **keep/emit the `<!-- PROVISIONAL: … -->` marker on that section**, and add it to the "what I defaulted" note. Any required section the user gave real values for → ensure no PROVISIONAL marker remains on it.
 3. Mark unfilled optional/enrichment sections with a resume hint, in the body where the section would be:
-   - Auto-triggerable: `*empty: run /define-brand-voice section=<name>*`
+   - Auto-triggerable: `*empty: run /brand section=<name>*`
    - Annotated: `*empty: <why / when to fill>*`
-   - Both: `*empty: run /define-brand-voice section=offers — once the new pricing is live*`
+   - Both: `*empty: run /brand section=offers — once the new pricing is live*`
 4. Write `BRAND.md` to the working directory (or update in place — never destroy populated sections).
 5. Tell the user, plainly: which sections are complete, **which required sections are still `PROVISIONAL` placeholders** (and that builders will warn + render generic until they're set for real), and which optional sections are empty. Then: "Upload this BRAND.md to your Claude Project Knowledge. Re-run `/brand` anytime to refine — I'll only ask about what's missing or what you want to change."
-6. If invoked in stub mode, skip the user message; return one line: `define-brand-voice: section=<name> complete, BRAND.md updated` — append ` (PROVISIONAL)` if the section was filled with defaults, so the caller knows to soft-stop. Always honour the floor for any required section you touched.
+6. If invoked in stub mode, skip the user message; return one line: `brand: section=<name> complete, BRAND.md updated` — append ` (PROVISIONAL)` if the section was filled with defaults, so the caller knows to soft-stop. Always honour the floor for any required section you touched.
 
 ---
 

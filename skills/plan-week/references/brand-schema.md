@@ -2,7 +2,7 @@
 
 The strategic-planning cascade (`/plan-year`, `/plan-quarter`, `/plan-month`, `/plan-week`) — along with any `build-*` content skill installed alongside it — reads brand context from a single document called `BRAND.md` that lives in the client's Claude Project Knowledge. This is that document's schema.
 
-The matching `define-brand-voice` skill produces a `BRAND.md` in this shape via an interactive interview. This file is the contract between the two.
+The matching `/brand` skill produces a `BRAND.md` in this shape via an interactive interview. This file is the contract between the two.
 
 ## Required sections
 
@@ -87,7 +87,7 @@ Canonical list of offers the brand pulls readers toward.
 
 ## Provisional markers
 
-A required section can be structurally complete but hold *starter defaults*, not the client's real brand — e.g. `define-brand-voice` filled a neutral palette or a default font pair because the user had nothing yet and chose not to be blocked. Such a section carries a single HTML-comment marker between its heading and its ```yaml fence:
+A required section can be structurally complete but hold *starter defaults*, not the client's real brand — e.g. `/brand` filled a neutral palette or a default font pair because the user had nothing yet and chose not to be blocked. Such a section carries a single HTML-comment marker between its heading and its ```yaml fence:
 
 ```
 ### `Color Bases`
@@ -98,11 +98,11 @@ A required section can be structurally complete but hold *starter defaults*, not
 
 **Contract:**
 - The marker is a line matching the prefix `<!-- PROVISIONAL` located after a section's `### \`Heading\`` and before that section's first ```yaml fence.
-- `define-brand-voice` emits it on any required section it fills with default/starter values, and removes it the moment the user supplies real values for that section.
+- `/brand` emits it on any required section it fills with default/starter values, and removes it the moment the user supplies real values for that section.
 - A consuming skill that finds a required section marked PROVISIONAL must NOT silently proceed. It treats the section as present-but-placeholder: warn the user plainly that output will look generic until real values are set, and offer to proceed anyway only on explicit confirmation. This is distinct from a missing/empty required section, which is still a hard stop.
 
 ## How the skill parses this
 
-Consuming skills look for `BRAND.md` in the conversation context (injected from Claude Project Knowledge). The first occurrence of each section heading is the source of truth. If a required section is missing or its body is empty, the skill stops and invokes `define-brand-voice`. If a required section is present but marked PROVISIONAL (see above), the skill soft-stops: warn and offer render-anyway, do not proceed silently.
+Consuming skills look for `BRAND.md` in the conversation context (injected from Claude Project Knowledge). The first occurrence of each section heading is the source of truth. If a required section is missing or its body is empty, the skill stops and invokes `/brand`. If a required section is present but marked PROVISIONAL (see above), the skill soft-stops: warn and offer render-anyway, do not proceed silently.
 
 Hex colors are validated as `#RRGGBB`. Font names are looked up against installed fonts; missing fonts fall back to the declared fallback chain.

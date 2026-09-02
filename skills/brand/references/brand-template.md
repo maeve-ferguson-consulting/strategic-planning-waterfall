@@ -9,8 +9,8 @@ HOW SKILLS READ THIS FILE
   (### `Brand Identity`, ### `Color Bases`, ### `Typography`, ### `Voice
   Rules`). The first occurrence of each heading wins. If a required section is
   missing OR its body is empty, the builder stops and tells the user to run
-  define-brand-voice. It will NOT substitute its own defaults.
-- Therefore define-brand-voice must NEVER leave a required section empty. On
+  /brand. It will NOT substitute its own defaults.
+- Therefore /brand must NEVER leave a required section empty. On
   the fastest possible pass it still fills all four with at least a sensible,
   user-acknowledged starter value (marked DEFAULT) so the user is never dead-
   ended. DEFAULT values are honest placeholders the user agreed to, not the
@@ -21,7 +21,7 @@ HOW SKILLS READ THIS FILE
 TIERS
 - REQUIRED  → must always be present and non-empty (the build-unblocking minimum)
 - OPTIONAL  → improves output; safe to omit or fill later
-- ENRICHMENT→ define-brand-voice extras consumed by non-builder skills
+- ENRICHMENT→ /brand extras consumed by non-builder skills
               (newsletter, repurposing, etc.); never block a build
 -->
 
@@ -106,7 +106,7 @@ person: "second"                     # first | second | third
 <!-- TIER: OPTIONAL — 2-5 big ideas every piece should connect to. Free-form.
      Safe to omit on the first pass; add as the worldview crystallises. -->
 
-*empty: run /define-brand-voice section=vision*
+*empty: run /brand section=vision*
 
 ---
 
@@ -125,7 +125,7 @@ metallic_stops: []
 <!-- TIER: OPTIONAL — verbatim verified client quotes, no paraphrasing.
      Skip until real quotes exist; empty is better than invented. -->
 
-*empty: run /define-brand-voice section=testimonials*
+*empty: run /brand section=testimonials*
 
 ---
 
@@ -133,12 +133,12 @@ metallic_stops: []
 
 <!-- TIER: OPTIONAL — canonical offers content can pull readers toward. -->
 
-*empty: run /define-brand-voice section=offers*
+*empty: run /brand section=offers*
 
 ---
 
 <!-- ============================================================
-     ENRICHMENT SECTIONS — define-brand-voice extras.
+     ENRICHMENT SECTIONS — /brand extras.
      Consumed by non-builder skills (newsletter, repurposing,
      copywriting). Never required; never block a build. Grow over time.
      ============================================================ -->

@@ -3,7 +3,7 @@ WORKED EXAMPLE — not a default, and not a starting point.
 
 Northgate Financial is a FICTIONAL firm invented purely to show the shape of a
 fully-populated BRAND.md. Every name, quote, offer, price, and proof point below
-is made up. Do not copy any of it into a real BRAND.md — run the interview and
+is made up. Do not copy any of it into a real BRAND.md — run `/brand` and
 capture the actual brand instead.
 
 This file conforms to references/brand-schema.md — the same contract the

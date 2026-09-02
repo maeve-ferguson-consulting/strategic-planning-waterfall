@@ -1,14 +1,17 @@
 {
   "name": "strategic-planning-waterfall",
+  "displayName": "The Strategic Planning Waterfall",
   "description": "Cascading annual, quarterly, monthly, and weekly strategic planning skills built on the 10x Is Easier Than 2x and Full Focus methodologies.",
   "author": {
     "name": "Maeve Ferguson Consulting"
   },
+  "homepage": "https://github.com/maeve-ferguson-consulting/strategic-planning-waterfall#readme",
+  "repository": "https://github.com/maeve-ferguson-consulting/strategic-planning-waterfall",
   "skills": [
-    "./skills/define-brand-voice",
-    "./skills/annual-strategic-planner",
-    "./skills/quarterly-strategic-planner",
-    "./skills/monthly-gameplan",
-    "./skills/weekly-plan"
+    "./skills/brand",
+    "./skills/plan-year",
+    "./skills/plan-quarter",
+    "./skills/plan-month",
+    "./skills/plan-week"
   ]
 }
