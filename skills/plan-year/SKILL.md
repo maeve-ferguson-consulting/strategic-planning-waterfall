@@ -1,5 +1,5 @@
 ---
-name: annual-strategic-planner
+name: plan-year
 description: "Run an annual 10x strategic planning session using Dan Sullivan and Benjamin Hardy's \"10x Is Easier Than 2x\" methodology. Establishes the 3-year 10x vision, identifies the 80% to eliminate and 20% to amplify, sets three annual initiatives and a decision filter, and breaks the year into quarterly milestones. Use this whenever the user wants to plan the year ahead, set a multi-year vision, or decide what to focus on this year - even if they don't say \"annual plan\". Triggers on /plan-year, \"annual planning\", \"annual review\", \"yearly plan\", \"10x vision\", \"map out next year\", \"3-year vision\", \"what should I focus on this year\", or any request for annual business strategy. This is the top of the strategy cascade (/plan-year -> /plan-quarter -> /plan-month -> /plan-week); for content calendars use plan-content instead. Brand-agnostic: reads all client context from BRAND.md at runtime. Produces one branded interactive HTML strategic plan plus a spreadsheet tracker. One question at a time. Challenges 2x thinking. WHO not HOW."
 ---
 
@@ -13,7 +13,7 @@ Brand-agnostic. Every brand decision (company name, owner name, colors, fonts, v
 
 Throughout this skill, where you see a reference to the company name, read it from `BRAND.md > Brand Identity > name`; the owner's name and the filename token come from the same section (`short_name` for filenames). Never hardcode any client, company, or person name.
 
-If `BRAND.md` is missing or incomplete, this skill MUST stop and tell the user to run `define-brand-voice` to capture it. Producing a plan in the wrong brand is worse than not producing one.
+If `BRAND.md` is missing or incomplete, this skill MUST stop and tell the user to run `/brand` to capture it. Producing a plan in the wrong brand is worse than not producing one.
 
 ---
 
@@ -27,13 +27,13 @@ If `BRAND.md` is missing or incomplete, this skill MUST stop and tell the user t
    - `Voice Rules` (language variant, em-dash policy)
 3. If any required section is missing or empty, stop and tell the user this, in your own words:
    - The plan can't proceed without their brand context.
-   - Their next step is to run the `define-brand-voice` skill (a separate brand-capture interview) and save the resulting `BRAND.md` to their Claude Project Knowledge.
+   - Their next step is to run `/brand` (a separate brand-capture interview) and save the resulting `BRAND.md` to their Claude Project Knowledge.
    - Once that's in place, they can come back and re-run the same prompt.
-   - Do NOT silently substitute defaults. Do NOT chain-invoke `define-brand-voice` automatically - tell the user it's their next step.
+   - Do NOT silently substitute defaults. Do NOT chain-invoke `/brand` automatically - tell the user it's their next step.
 4. If a required section is present but marked PROVISIONAL (a `<!-- PROVISIONAL: ... -->` comment between its heading and its yaml fence - see `references/brand-schema.md`), do NOT silently proceed. The section holds starter defaults, not the client's real brand. Tell the user, in your own words:
    - Which required section(s) are still placeholder defaults (e.g. Color Bases, Typography), and that the plan will therefore look generic, not like their brand.
-   - To get real on-brand output, the fix is to run `define-brand-voice` again and set those values, then re-run.
-   - If they explicitly say to proceed anyway ("build it anyway", "I know, just do it"), proceed using the placeholder values. Otherwise stop here. Do NOT chain-invoke `define-brand-voice` automatically.
+   - To get real on-brand output, the fix is to run `/brand` again and set those values, then re-run.
+   - If they explicitly say to proceed anyway ("build it anyway", "I know, just do it"), proceed using the placeholder values. Otherwise stop here. Do NOT chain-invoke `/brand` automatically.
 5. If all required sections are present and none are PROVISIONAL, proceed.
 
 The facilitation session (the questions below) can begin once the precheck passes - you don't need brand context to ask the questions, but you DO need it before producing the branded HTML and tracker outputs.
@@ -240,10 +240,10 @@ The annual plan is the source of truth for the entire cascade. Here is each rela
 
 | Skill | Relationship | What it reads from / feeds the annual plan |
 |-------|-------------|--------------------------------------------|
-| quarterly-strategic-planner (`/plan-quarter`) | DOWNSTREAM - annual plan breaks into quarterly execution | Three annual initiatives, keystone, quarterly milestones, 10x identity, scorecard metrics - located via the Cascade Reference block |
-| monthly-gameplan (`/plan-month`) | DOWNSTREAM (via `/plan-quarter`) - quarterly goals break into monthly execution | Via `/plan-quarter` - inherits the annual context through the quarterly plan |
-| weekly planner (`/plan-week`) | DOWNSTREAM (via `/plan-month`) - monthly Big 3 break into weekly accountability | Via `/plan-month` - inherits the annual context through the monthly plan |
-| define-brand-voice | PREREQUISITE - produces the `BRAND.md` this skill reads for all brand context | Supplies brand identity, colors, typography, and voice rules consumed at runtime |
+| `/plan-quarter` | DOWNSTREAM - annual plan breaks into quarterly execution | Three annual initiatives, keystone, quarterly milestones, 10x identity, scorecard metrics - located via the Cascade Reference block |
+| `/plan-month` | DOWNSTREAM (via `/plan-quarter`) - quarterly goals break into monthly execution | Via `/plan-quarter` - inherits the annual context through the quarterly plan |
+| `/plan-week` | DOWNSTREAM (via `/plan-month`) - monthly Big 3 break into weekly accountability | Via `/plan-month` - inherits the annual context through the monthly plan |
+| `/brand` | PREREQUISITE - produces the `BRAND.md` this skill reads for all brand context | Supplies brand identity, colors, typography, and voice rules consumed at runtime |
 
 **If the annual plan changes mid-year,** the next `/plan-quarter` session must acknowledge the change and realign the quarterly outcome. Changes cascade downward - they do not skip levels.
 

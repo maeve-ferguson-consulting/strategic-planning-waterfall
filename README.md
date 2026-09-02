@@ -8,27 +8,36 @@ Draws on the ideas in Dan Sullivan and Benjamin Hardy's **10x Is Easier Than 2x*
 
 ---
 
-## Step 1 — Connect Claude to GitHub (one-time)
+## Step 1 — Install in Claude Cowork
 
-1. Open Claude Code (or Claude Cowork)
-2. Click your profile icon → **Settings**
-3. Scroll to **Integrations** → click **Connect GitHub** and authorize
+1. Open **Cowork** in Claude, then open **Customize → Plugins**.
+2. Under **Personal plugins**, click **+ → Add marketplace → Add from a repository**.
+3. Paste `https://github.com/maeve-ferguson-consulting/strategic-planning-waterfall`.
+4. Open **The Strategic Planning Waterfall** in the marketplace and click **Install**.
 
-If you've connected GitHub before, skip to Step 2.
+This repository is public, so you do not need to connect a GitHub account. To pick up later improvements, open the marketplace in **Customize → Plugins** and click **Update**.
 
-## Step 2 — Install the plugin
+> If Cowork says `Unknown skill: plugin`, you pasted a Claude Code command into a Cowork conversation. Use **Customize → Plugins** instead.
 
-In any Claude Code / Cowork conversation, run:
+<details>
+<summary>Using Claude Code instead?</summary>
+
+Run these two commands in Claude Code:
 
 ```
-/plugin marketplace add github:maeve-ferguson-consulting/strategic-planning-waterfall
+/plugin marketplace add maeve-ferguson-consulting/strategic-planning-waterfall
+/plugin install strategic-planning-waterfall@strategic-planning-waterfall
 ```
 
-Select **Install** when prompted, and keep **Auto-update** on — future improvements reach you automatically.
+</details>
 
-## Step 3 — Set up your brand context (first time only)
+### Check the installation
 
-Run:
+Start a new conversation and type `/`. You should see all five skills: `/brand`, `/plan-year`, `/plan-quarter`, `/plan-month`, and `/plan-week`. If you installed an earlier version, update the marketplace first and then start a new conversation.
+
+## Step 2 — Set up your brand context (first time only)
+
+Start a new conversation, type `/`, and select:
 
 ```
 /brand
@@ -36,7 +45,7 @@ Run:
 
 This is a short, one-question-at-a-time interview that captures your company name, voice, colors, and audience into a `BRAND.md` file. Every planning session below reads from it, so your plans come back branded to you, not to us.
 
-## Step 4 — Run the cascade
+## Step 3 — Run the cascade
 
 Work top-down, in this order:
 
@@ -51,11 +60,11 @@ Each one produces a branded, interactive HTML plan plus a spreadsheet tracker (e
 
 ## What's inside
 
-- `define-brand-voice` — the one-time brand intake that every other skill reads from
-- `annual-strategic-planner` — the 3-year 10x vision and annual initiatives
-- `quarterly-strategic-planner` — the 90-day 10x outcome
-- `monthly-gameplan` — the Big 3 and ideal week
-- `weekly-plan` — the Friday review-and-plan rhythm
+- `/brand` — the one-time brand intake that every other skill reads from
+- `/plan-year` — the 3-year 10x vision and annual initiatives
+- `/plan-quarter` — the 90-day 10x outcome
+- `/plan-month` — the Big 3 and ideal week
+- `/plan-week` — the Friday review-and-plan rhythm
 
 ## Questions
 

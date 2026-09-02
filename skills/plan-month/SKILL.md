@@ -1,5 +1,5 @@
 ---
-name: monthly-gameplan
+name: plan-month
 description: "Run a monthly gameplan session so the quarter's 10x outcome stays on track - reviews the month just ended, sets the Big 3 goals tied to the quarterly outcome, designs the ideal week, and locks the weekly rhythm. Use this whenever the user wants to set or review monthly goals, their Big 3, or an ideal week, or asks how to hit a quarterly target - even if they don't say \"plan-month\". Triggers on /plan-month, \"monthly gameplan\", \"monthly review\", \"plan the month\", \"monthly planning\", \"set my Big 3\", or \"how do I hit my quarterly goal\". Reads the quarterly plan first. This is the month level of the strategy cascade (/plan-year -> /plan-quarter -> /plan-month -> /plan-week) - goal and execution planning, NOT content calendars or what-to-post planning (use plan-content for those). Brand-agnostic: reads all client context from BRAND.md. Produces a branded interactive HTML gameplan plus a spreadsheet tracker. One question at a time."
 ---
 
@@ -15,7 +15,7 @@ Brand-agnostic. Every brand decision (company name, owner name, colors, fonts, v
 
 Throughout this document, "the company" and "the owner" mean the values read from `BRAND.md > Brand Identity` (`name` and the owner's name). The filename token is `BRAND.md > Brand Identity > short_name`. Never hardcode a company or person name. All generated prose and the HTML artifact follow `BRAND.md > Voice Rules` (`language_variant` and `em_dashes` policy).
 
-If `BRAND.md` is missing or incomplete, this skill MUST stop and tell the user to run `define-brand-voice` (see PRECHECK). Shipping a plan in the wrong brand is worse than not shipping.
+If `BRAND.md` is missing or incomplete, this skill MUST stop and tell the user to run `/brand` (see PRECHECK). Shipping a plan in the wrong brand is worse than not shipping.
 
 ---
 
@@ -31,13 +31,13 @@ This skill produces a branded HTML artifact, so it needs the full brand precheck
    - `Voice Rules` (language variant, em-dash policy)
 3. If any required section is missing or empty, stop and tell the user this, in your own words:
    - The plan can't proceed without their brand context.
-   - Their next step is to run the `define-brand-voice` skill (a separate ~15-minute brand-capture interview) and save the resulting `BRAND.md` to their Claude Project Knowledge.
+   - Their next step is to run `/brand` (a separate ~15-minute brand-capture interview) and save the resulting `BRAND.md` to their Claude Project Knowledge.
    - Once that's in place, they can come back and re-run the same prompt.
-   - Do NOT silently substitute defaults. Do NOT chain-invoke `define-brand-voice` automatically. Tell the user it's their next step.
+   - Do NOT silently substitute defaults. Do NOT chain-invoke `/brand` automatically. Tell the user it's their next step.
 4. If a required section is present but marked PROVISIONAL (a `<!-- PROVISIONAL: ... -->` comment between its heading and its yaml fence, per `references/brand-schema.md`), do NOT silently proceed. The section holds starter defaults, not the client's real brand. Tell the user, in your own words:
    - Which required section(s) are still placeholder defaults (e.g. Color Bases, Typography), and that the HTML plan will therefore look generic, not like their brand.
-   - To get real on-brand output, the fix is to run `define-brand-voice` again and set those values, then re-run.
-   - If they explicitly say to proceed anyway ("render it anyway", "I know, just do it"), proceed using the placeholder values. Otherwise stop here. Do NOT chain-invoke `define-brand-voice` automatically.
+   - To get real on-brand output, the fix is to run `/brand` again and set those values, then re-run.
+   - If they explicitly say to proceed anyway ("render it anyway", "I know, just do it"), proceed using the placeholder values. Otherwise stop here. Do NOT chain-invoke `/brand` automatically.
 5. If all required sections are present and none are PROVISIONAL, proceed.
 
 ---

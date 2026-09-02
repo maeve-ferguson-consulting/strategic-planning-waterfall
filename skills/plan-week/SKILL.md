@@ -1,5 +1,5 @@
 ---
-name: weekly-plan
+name: plan-week
 description: "Friday weekly review and plan - the fast, conversational execution layer of the strategy cascade. Reviews the week just ended against the monthly Big 3, then plans the week ahead (Big 3 progress, weekly leading-indicator metrics, next week's priorities). Use this whenever the user wants to review the week or plan the next one against their monthly goals - even if they don't say \"plan-week\". Triggers on /plan-week, \"weekly plan\", \"plan the week\", \"review the week\", \"Friday plan\", \"what happened this week\", or \"plan next week\". Reads the monthly gameplan from /plan-month. This is the bottom of the strategy cascade (/plan-year -> /plan-quarter -> /plan-month -> /plan-week); NOT for content/editorial calendar planning (that's the separate plan-content skill) or quarterly/annual planning. Brand-agnostic: reads client context from BRAND.md. One question at a time. No file output."
 ---
 
@@ -16,7 +16,7 @@ At the start of a session, look for a `BRAND.md` document in the conversation co
 - `Voice Rules > language_variant` and `em_dashes` — so any prose and the optional summary match the brand's voice.
 - The client's weekly **leading-indicator metric labels**, if BRAND.md records them (e.g. under an Offer Bank note, a Vision Tethers line, or a metrics block the client has added). These are the handful of weekly activity numbers the owner tracks toward their pipeline.
 
-**If BRAND.md is absent or doesn't name the weekly metrics:** do NOT assume or invent targets. The inline-ask script lives in Q2 — ask there, once, then remember the labels for the rest of the session. This is the light-precheck path — no hard stop, no `define-brand-voice` chain.
+**If BRAND.md is absent or doesn't name the weekly metrics:** do NOT assume or invent targets. The inline-ask script lives in Q2 — ask there, once, then remember the labels for the rest of the session. This is the light-precheck path — no hard stop, no `/brand` chain.
 
 ---
 
