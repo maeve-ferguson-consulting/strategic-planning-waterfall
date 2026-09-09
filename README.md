@@ -13,7 +13,7 @@ Draws on the ideas in Dan Sullivan and Benjamin Hardy's **10x Is Easier Than 2x*
 1. Open **Cowork** in Claude, then open **Customize → Plugins**.
 2. Under **Personal plugins**, click **+ → Add marketplace → Add from a repository**.
 3. Paste `https://github.com/maeve-ferguson-consulting/strategic-planning-waterfall`.
-4. Open **The Strategic Planning Waterfall** in the marketplace and click **Install**.
+4. Click **Sync**, then find **The Strategic Planning Waterfall** and click **Add** or **Install**, depending on your Claude version.
 
 This repository is public, so you do not need to connect a GitHub account. To pick up later improvements, open the marketplace in **Customize → Plugins** and click **Update**.
 
