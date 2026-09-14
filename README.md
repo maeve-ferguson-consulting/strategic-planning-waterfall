@@ -10,6 +10,8 @@ Draws on the ideas in Dan Sullivan and Benjamin Hardy's **10x Is Easier Than 2x*
 
 ## Step 1 — Install in Claude Cowork
 
+> **Canonical maintainer source:** This README contains the editable installation and update instructions.
+
 1. Open **Cowork** in Claude, then open **Customize → Plugins**.
 2. Under **Personal plugins**, click **+ → Add marketplace → Add from a repository**.
 3. Paste `https://github.com/maeve-ferguson-consulting/strategic-planning-waterfall`.
