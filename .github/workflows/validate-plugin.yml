@@ -1,0 +1,55 @@
+name: Validate plugin
+
+on:
+  pull_request:
+    paths:
+      - .claude-plugin/**
+      - skills/**
+      - scripts/validate_plugin.py
+      - README.md
+      - docs/index.html
+      - docs/setup-guide.pdf
+      - .github/workflows/validate-plugin.yml
+  push:
+    branches:
+      - main
+    paths:
+      - .claude-plugin/**
+      - skills/**
+      - scripts/validate_plugin.py
+      - README.md
+      - docs/index.html
+      - docs/setup-guide.pdf
+      - .github/workflows/validate-plugin.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22.23.2
+          package-manager-cache: false
+
+      - name: Validate JSON
+        run: |
+          python3 -m json.tool .claude-plugin/plugin.json >/dev/null
+          python3 -m json.tool .claude-plugin/marketplace.json >/dev/null
+
+      - name: Validate plugin contract
+        run: python3 scripts/validate_plugin.py
+
+      - name: Validate Claude plugin and marketplace
+        run: |
+          npx --yes @anthropic-ai/claude-code@2.1.270 plugin validate skills --strict
+          npx --yes @anthropic-ai/claude-code@2.1.270 plugin validate .
