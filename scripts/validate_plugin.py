@@ -14,6 +14,7 @@ MANIFEST = ROOT / ".claude-plugin" / "plugin.json"
 README = ROOT / "README.md"
 LANDING_PAGE = ROOT / "docs" / "index.html"
 SETUP_GUIDE = ROOT / "docs" / "setup-guide.pdf"
+EXPECTED_PLUGIN_VERSION = "2.1.0"
 EXPECTED_SKILLS = (
     ("./skills/brand", "brand"),
     ("./skills/plan-year", "plan-year"),
@@ -23,14 +24,46 @@ EXPECTED_SKILLS = (
 )
 
 
-def frontmatter_name(skill_file: Path) -> str | None:
+def frontmatter_fields(skill_file: Path) -> dict[str, object] | None:
     text = skill_file.read_text(encoding="utf-8")
     match = re.match(r"\A---\s*\n(.*?)\n---\s*(?:\n|\Z)", text, re.DOTALL)
     if match is None:
         return None
 
-    names = re.findall(r"^name:\s*([^\s#]+)\s*$", match.group(1), re.MULTILINE)
-    return names[0] if len(names) == 1 else None
+    fields: dict[str, object] = {}
+    for line in match.group(1).splitlines():
+        field = re.fullmatch(r"([a-z][a-z0-9_-]*):\s*(.*?)\s*", line)
+        if field is None:
+            continue
+
+        key, source_value = field.groups()
+        if source_value.startswith('"'):
+            try:
+                value: object = json.loads(source_value)
+            except json.JSONDecodeError:
+                value = None
+        elif source_value.startswith("'"):
+            value = (
+                source_value[1:-1].replace("''", "'")
+                if source_value.endswith("'")
+                else None
+            )
+        elif source_value.lower() in {"", "null", "~", "true", "false"}:
+            value = None
+        else:
+            try:
+                decoded_value = json.loads(source_value)
+            except json.JSONDecodeError:
+                value = source_value.partition(" #")[0].rstrip()
+            else:
+                value = decoded_value if isinstance(decoded_value, str) else None
+
+        if key in fields:
+            fields[key] = None
+        else:
+            fields[key] = value
+
+    return fields
 
 
 def contains_in_order(text: str, phrases: tuple[str, ...]) -> bool:
@@ -58,6 +91,11 @@ def main() -> int:
             f"{MANIFEST.relative_to(ROOT)} must declare exactly these skills in order: "
             + ", ".join(expected_paths)
         )
+    if manifest.get("version") != EXPECTED_PLUGIN_VERSION:
+        errors.append(
+            f"{MANIFEST.relative_to(ROOT)} version must be "
+            f"{EXPECTED_PLUGIN_VERSION!r}, got {manifest.get('version')!r}"
+        )
 
     schema_files: list[Path] = []
     for relative_path, command in EXPECTED_SKILLS:
@@ -71,11 +109,24 @@ def main() -> int:
         if not skill_file.is_file():
             errors.append(f"declared skill file is missing: {skill_file.relative_to(ROOT)}")
         else:
-            actual_name = frontmatter_name(skill_file)
+            frontmatter = frontmatter_fields(skill_file)
+            actual_name = frontmatter.get("name") if frontmatter is not None else None
             if actual_name != command:
                 errors.append(
                     f"{skill_file.relative_to(ROOT)} frontmatter name must be "
                     f"{command!r}, got {actual_name!r}"
+                )
+            description = (
+                frontmatter.get("description") if frontmatter is not None else None
+            )
+            if not isinstance(description, str):
+                errors.append(
+                    f"{skill_file.relative_to(ROOT)} frontmatter description must be a string"
+                )
+            elif not 1 <= len(description) <= 1024:
+                errors.append(
+                    f"{skill_file.relative_to(ROOT)} frontmatter description must be "
+                    f"1-1024 characters, got {len(description)}"
                 )
 
         if not schema_file.is_file():
